@@ -2,15 +2,24 @@
 Realiza un programa que calcule el tiempo que tardará en caer un objeto desde
 una altura h. Aplica la fórmula t = √2hg siendo g = 9.81m/s2 */
 
-import java.util.Scanner;
 public class Eje06 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        System.out.println("Calcula el timpo en que tarda caer un objeto");
+        try{
+            float g = 9.81f;
+            System.out.print("Por favor, introduzca la altura: ");
+            int h = Integer.parseInt(System.console().readLine());
+            double t = Math.sqrt(2+h/g);
+            if(Double.valueOf(t).isNaN()){
+                System.out.println("No es posible calcular el tiempo con altura negativa");
+            }else{
+                System.out.printf("El objeto tarde en caer %.2f",t);
+            }
+        }catch(NumberFormatException e){
+            System.out.println("Error en la introducción de datos");
+        }catch(Exception e){
+            System.out.println("Error inesperado");
+        }
 
-        System.out.print("¿Desde que altura(m) cae el objeto? ");
-        int alt = Integer.parseInt(sc.nextLine());
-
-        System.out.printf("Tardará en caer %.2f segundos", Math.sqrt((2*alt)/9.81));
-        sc.close();
     }
 }
